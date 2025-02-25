@@ -1,19 +1,29 @@
-import { User } from "../users/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Card } from 'src/cards/card.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity()
 export class Project {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: number;
+  @Column()
+  name: string;
 
-    @Column()
-    name: string;
-  
-    @Column()
-    description: string;
+  @Column({ type: 'text' })
+  description: string;
 
-    @ManyToOne(() => User, (user) => user.projects)
-    owner: User;
+  @Column({ default: false })
+  isPublic: boolean;
 
+  @ManyToOne(() => User, (user) => user.projects)
+  owner: User;
+  @OneToMany(() => Card, (card) => card.project)
+  cards: Card[];
 }
