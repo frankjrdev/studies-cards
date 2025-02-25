@@ -1,13 +1,13 @@
 import { Body, Controller, Param, Patch, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { ProjectsService } from '../../projects/service/projects.service';
+import { AsignaturesService } from '../../asignatures/service/asignatures.service';
 import { CardsService } from '../service/cards.service';
 
 @Controller('cards')
 export class CardsController {
   constructor(
     private readonly cardsService: CardsService,
-    private readonly projectsService: ProjectsService,
+    private readonly projectsService: AsignaturesService,
   ) {}
 
   @ApiOperation({ summary: 'Create new card' })
@@ -17,9 +17,11 @@ export class CardsController {
   async createCard(
     @Body() body: { question: string; answer: string; projectId: number },
   ) {
-    const project = await this.projectsService.getProjectById(body.projectId);
+    const project = await this.projectsService.getAsignatureById(
+      body.projectId,
+    );
     if (!project) {
-      throw new Error('Project not found');
+      throw new Error('Asignature not found');
     }
     return this.cardsService.createCard(body.question, body.answer, project);
   }

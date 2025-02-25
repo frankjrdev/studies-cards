@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Project } from '../../projects/project.entity';
+import { Asignature } from '../../asignatures/asignatures.entity';
 import { Card } from '../card.entity';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class CardsService {
     private readonly cardRepository: Repository<Card>,
   ) {}
 
-  async createCard(question: string, answer: string, project: Project) {
+  async createCard(question: string, answer: string, project: Asignature) {
     const card = this.cardRepository.create({ question, answer, project });
     return this.cardRepository.save(card);
   }

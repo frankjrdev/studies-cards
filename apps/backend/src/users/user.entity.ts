@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Project } from '../projects/project.entity';
+import { Asignature } from '../asignatures/asignatures.entity';
 
 @Entity()
 export class User {
@@ -38,8 +38,8 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Project, (project) => project.owner, { cascade: true })
-  projects: Project[];
+  @OneToMany(() => Asignature, (project) => project.owner, { cascade: true })
+  projects: Asignature[];
 
   // Estadísticas globales del usuario
   @Column({ default: 0 })

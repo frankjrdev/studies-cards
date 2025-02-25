@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Project } from '../projects/project.entity';
+import { Asignature } from '../asignatures/asignatures.entity';
 
 @Entity()
 export class Card {
@@ -12,8 +12,17 @@ export class Card {
   @Column()
   answer: string;
 
-  @ManyToOne(() => Project, (project) => project.cards)
-  project: Project;
+  @Column({ default: 0 })
+  timesCorrect: number;
+
+  @Column({ default: 0 })
+  timesIncorrect: number;
+
+  @Column({ default: 0 })
+  timesAsked: number;
+
+  @ManyToOne(() => Asignature, (project) => project.cards)
+  project: Asignature;
 
   // Contador de respuestas correctas e incorrectas
   @Column({ default: 0 })
