@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
-import { UsersService } from './service/users.service';
 import { UsersController } from './controller/users.controller';
-import { Project } from 'src/projects/project.entity';
-import { ProjectsModule } from 'src/projects/projects.module';
+import { UsersService } from './service/users.service';
+import { User } from './user.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), ProjectsModule], // Registra la entidad en TypeORM
-  exports: [TypeOrmModule], providers: [UsersService], controllers: [UsersController],
+  imports: [
+    TypeOrmModule.forFeature([User]) // Usa forwardRef para evitar el ciclo
+  ],
+  controllers: [UsersController],
+  providers: [UsersService],
+  exports: [UsersService, TypeOrmModule], // Exporta UsersService si se necesita en otros módulos
 })
 export class UsersModule {}

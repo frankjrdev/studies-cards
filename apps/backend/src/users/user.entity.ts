@@ -1,6 +1,13 @@
-
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Project } from '../projects/project.entity';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
@@ -8,7 +15,7 @@ export class User {
   id: number;
 
   @Column()
-   name: string;
+  name: string;
 
   @Column()
   lastname: string;
@@ -24,7 +31,7 @@ export class User {
 
   @Column({ nullable: true })
   profilePicture: string;
-  
+
   @Column({ unique: true })
   email: string;
 
@@ -34,7 +41,13 @@ export class User {
   @OneToMany(() => Project, (project) => project.owner, { cascade: true })
   projects: Project[];
 
-    
+  // Estadísticas globales del usuario
+  @Column({ default: 0 })
+  totalCorrectAnswers: number;
+
+  @Column({ default: 0 })
+  totalIncorrectAnswers: number;
+
   @CreateDateColumn()
   createdAt: Date;
 
