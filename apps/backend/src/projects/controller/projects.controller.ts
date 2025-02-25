@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { UsersService } from '../../users/service/users.service';
 import { ProjectsService } from '../service/projects.service';
 
@@ -9,6 +10,9 @@ export class ProjectsController {
     private readonly usersService: UsersService,
   ) {}
 
+  @ApiOperation({ summary: 'Create new project' })
+  @ApiResponse({ status: 201, description: 'Proyecto creado exitosamente' })
+  @ApiResponse({ status: 400, description: 'Datos inválidos' })
   @Post()
   async createProject(
     @Body()
@@ -28,6 +32,9 @@ export class ProjectsController {
     );
   }
 
+  @ApiOperation({ summary: 'Get project by userId' })
+  @ApiResponse({ status: 201, description: 'Proyectos obtenidos exitosamenet' })
+  @ApiResponse({ status: 400, description: 'Datos inválidos' })
   @Get(':userId')
   async getProjects(@Param('userId') userId: number) {
     return this.projectsService.getProjectsByUser(userId);
