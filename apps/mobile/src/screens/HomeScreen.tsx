@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import DecksCards from '../components/DecksCards';
 import { useFlashcardsStore } from '../store/useFlashcardsStore';
+import colors from '../theme/colors';
 import { Deck } from '../types/types';
 
 export default function HomeScreen() {
@@ -88,14 +89,16 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 0,
+    color: colors.grey.medium,
   },
 
   title_decks: {
     fontSize: 32,
     fontWeight: 'bold',
     marginTop: 40,
-    marginBottom: 20,
+    marginBottom: 0,
+    color: colors.grey.medium,
   },
 
   cardsContainer: {
@@ -108,11 +111,11 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     padding: 20,
-    backgroundColor: '#3498db',
+    backgroundColor: colors.primary,
   },
 
   deckCard: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: colors.secondary,
   },
 
   cardTitle: {

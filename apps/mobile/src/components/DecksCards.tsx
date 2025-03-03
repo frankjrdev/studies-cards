@@ -4,6 +4,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { Card, Text, Title } from 'react-native-paper';
+import colors from '../theme/colors';
 import { RootStackParamList } from '../types/navigation';
 import { DecksHomeScreenProps } from '../types/types';
 
@@ -19,6 +20,7 @@ export default function DecksCards({ decks }: DecksHomeScreenProps) {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
         <TouchableOpacity
+          activeOpacity={0.9}
           onPress={() =>
             navigation.navigate('DecksScreen', { deckId: item.id })
           }
@@ -46,7 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     borderRadius: 10,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#3498db',
+    color: colors.titles,
   },
 
   info: {
