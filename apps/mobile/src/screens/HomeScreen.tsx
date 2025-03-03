@@ -1,13 +1,41 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card, Title } from 'react-native-paper';
+import DecksCards from '../components/DecksCards';
 import { useFlashcardsStore } from '../store/useFlashcardsStore';
+import { Deck } from '../types/types';
 
 export default function HomeScreen() {
   const { cards, decks } = useFlashcardsStore();
 
+  // Datos de ejemplo
+  const decksList: Deck[] = [
+    {
+      id: '1',
+      title: 'React Basics',
+      project: 'Web Dev',
+      author: 'Alice',
+      totalCards: 10,
+    },
+    {
+      id: '2',
+      title: 'Node.js API',
+      project: 'Backend',
+      author: 'Bob',
+      totalCards: 15,
+    },
+    {
+      id: '3',
+      title: 'Data Structures',
+      project: 'CS',
+      author: 'Charlie',
+      totalCards: 20,
+    },
+  ];
+
   return (
     <View style={styles.container}>
+      {/* Resume information  */}
       <Text style={styles.title}>Resume</Text>
 
       <View style={styles.cardsContainer}>
@@ -27,6 +55,10 @@ export default function HomeScreen() {
           </Card.Content>
         </Card>
       </View>
+
+      <Text style={styles.title_decks}>Decks</Text>
+      {/* Lista de Decks */}
+      <DecksCards decks={decksList} />
     </View>
   );
 }
@@ -41,6 +73,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
+
+  title_decks: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    marginTop: 40,
     marginBottom: 20,
   },
 
