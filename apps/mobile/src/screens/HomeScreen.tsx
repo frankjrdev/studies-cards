@@ -9,27 +9,42 @@ export default function HomeScreen() {
   const { cards, decks } = useFlashcardsStore();
 
   // Datos de ejemplo
+  // Datos de ejemplo para el MIR
   const decksList: Deck[] = [
     {
       id: '1',
-      title: 'React Basics',
-      project: 'Web Dev',
-      author: 'Alice',
-      totalCards: 10,
+      title: 'Anatomía',
+      project: 'Medicina',
+      author: 'Edith Peroza',
+      totalCards: 50,
     },
     {
       id: '2',
-      title: 'Node.js API',
-      project: 'Backend',
-      author: 'Bob',
-      totalCards: 15,
+      title: 'Fisiología',
+      project: 'Medicina',
+      author: 'Edith Peroza',
+      totalCards: 40,
     },
     {
       id: '3',
-      title: 'Data Structures',
-      project: 'CS',
-      author: 'Charlie',
-      totalCards: 20,
+      title: 'Farmacología',
+      project: 'Medicina',
+      author: 'Edith Peroza',
+      totalCards: 60,
+    },
+    {
+      id: '4',
+      title: 'Microbiología',
+      project: 'Medicina',
+      author: 'Edith Peroza',
+      totalCards: 45,
+    },
+    {
+      id: '5',
+      title: 'Patología',
+      project: 'Medicina',
+      author: 'Edith Peroza',
+      totalCards: 55,
     },
   ];
 
