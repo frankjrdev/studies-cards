@@ -8,14 +8,15 @@ import {
   View,
 } from 'react-native';
 import { BarChart, PieChart } from 'react-native-chart-kit';
+import colors from '../theme/colors';
 
 export default function StatsScreen() {
   const [filter, setFilter] = useState('projects');
 
   // Datos de ejemplo para estadísticas
   const pieData = [
-    { name: 'Aciertos', percentage: 75, color: '#4CAF50' },
-    { name: 'Errores', percentage: 25, color: '#F44336' },
+    { name: 'Aciertos', percentage: 75, color: colors.primary },
+    { name: 'Errores', percentage: 25, color: colors.background },
   ].map((item, index) => ({
     name: item.name,
     population: item.percentage,
@@ -89,7 +90,7 @@ const chartConfig = {
   color: (opacity = 1) => `rgba(0, 122, 255, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   style: { borderRadius: 10 },
-  propsForDots: { r: '4', strokeWidth: '2', stroke: '#007AFF' },
+  propsForDots: { r: '4', strokeWidth: '2', stroke: colors.primary },
 };
 
 const styles = StyleSheet.create({
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   activeFilter: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
   },
   filterText: {
     fontSize: 14,
