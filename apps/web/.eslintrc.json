@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../../eslint.config.mjs",
+    "eslint:recommended",
+    "plugin:@angular-eslint/recommended",
+    "plugin:@angular-eslint/template/process-inline-templates",
+    "prettier"
+  ],
+  "plugins": ["@angular-eslint"],
+  "rules": {
+    "prettier/prettier": "error",
+    "@angular-eslint/no-host-metadata-property": "off",
+    "no-undef": "off"
+  }
+}
