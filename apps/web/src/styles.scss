@@ -1,4 +1,30 @@
+// @use 'theme.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --primary-color: #91c5ec;
+  --secondary-color: #b1beeb;
+  --background-color: #c68bdf;
+  --titles-color: #8869a5;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --success-color: #34c759;
+  --error-color: #ff3b30;
+  --warning-color: #ffcc00;
+  --grey-light: #d1d1d6;
+  --grey-medium: #8e8e93;
+  --grey-dark: #3a3a3c;
+}

@@ -5,5 +5,12 @@
     "source.organizeImports": "always"
   },
   "eslint.validate": ["javascript", "typescript", "typescriptreact"],
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-*": {
+      "externalTemplate": true,
+      "style": "scss",
+      "stylesArray": true
+    }
+  }
 }

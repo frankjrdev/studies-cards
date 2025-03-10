@@ -11,9 +11,16 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: "apps/web/tsconfig.json",
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+    globals: {
+      console: "readonly",
+    },
+    env: {
+      browser: true, // Habilita las variables globales del navegador
+      node: true, // Habilita las variables globales de Node.js
     },
     plugins: {
       "@typescript-eslint": ts,
@@ -21,7 +28,9 @@ export default [
     },
     rules: {
       ...ts.configs.recommended.rules,
-      "prettier/prettier": "error", // Cambiado a "error" para asegurarnos de que se ejecute
+      "prettier/prettier": "error",
+      "no-undef": "off",
+      // Cambiado a "error" para asegurarnos de que se ejecute
     },
   },
   prettier,
